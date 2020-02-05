@@ -9,6 +9,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
 import NavBar from "./global/Navbar";
+import Footer from "./global/Footer";
+import SEO from "./seo";
 
 import "./bootstrap.min.css";
 import "./layout.css";
@@ -23,11 +25,18 @@ const Layout = ({ children }) => {
       }
     }
   `);
+  const {
+    site: {
+      siteMetadata: { title },
+    },
+  } = data;
 
   return (
     <>
+      <SEO title={title} />
       <NavBar />
       {children}
+      <Footer />
     </>
   );
 };

@@ -4,12 +4,13 @@ import BackgroundSection from "../components/global/BackgroundSection";
 import Layout from "../components/layout";
 import Info from "../components/Home/Info";
 
-const IndexPage = ({ data }) => {
+const AboutPage = ({ data }) => {
   return (
     <Layout>
       <BackgroundSection
         img={data.img.childImageSharp.fluid}
-        title="Regular Joe's"
+        title="About Us"
+        styleClass="about-background"
       />
       <Info />
     </Layout>
@@ -18,7 +19,7 @@ const IndexPage = ({ data }) => {
 
 export const query = graphql`
   {
-    img: file(relativePath: { eq: "default-background.jpeg" }) {
+    img: file(relativePath: { eq: "about-background.jpeg" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid_tracedSVG
@@ -28,4 +29,4 @@ export const query = graphql`
   }
 `;
 
-export default IndexPage;
+export default AboutPage;

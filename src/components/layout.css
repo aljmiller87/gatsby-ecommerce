@@ -1,5 +1,5 @@
 :root {
-  --mainBrown: #2d1ef1;
+  --mainBrown: #2d1e1f;
   --mainYellow: rgb(255, 157, 10);
   --mainGray: #ece8dc;
   --mainWhite: #fff;
@@ -25,13 +25,24 @@ h6 {
   color: var(--mainYellow);
 }
 
+.btn-yellow {
+  border-color: var(--mainYellow);
+  color: var(--mainYellow);
+}
+
+.btn-yellow:hover {
+  background: var(--mainYellow);
+  color: var(--mainBrown);
+}
+
 .cart-icon {
   cursor: pointer;
   color: var(--mainYellow);
   font-size: 2rem;
 }
 
-.default-background {
+.default-background,
+.about-background {
   align-items: center;
   background: linear-gradient(rgba(255, 158, 9, 0.5), rgba(255, 158, 9, 0.5));
   background-position: center;
@@ -40,4 +51,12 @@ h6 {
   justify-content: center;
   min-height: 100vh;
   opacity: 1 !important;
+}
+
+.about-background {
+  min-height: 60vh;
+}
+
+.footer {
+  background: var(--mainBrown);
 }
