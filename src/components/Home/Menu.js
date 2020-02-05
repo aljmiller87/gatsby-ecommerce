@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Title from "../global/Title";
-import { Img } from "gatsby-image";
+import Img from "gatsby-image";
 const Menu = ({ items }) => {
   const [menuItems, setMenuItems] = useState([...items.edges]);
   const [coffeeItems, setCoffeeItems] = useState([...items.edges]);
