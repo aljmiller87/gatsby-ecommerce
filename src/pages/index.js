@@ -1,20 +1,17 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
-import { FaGulp } from "react-icons/fa";
 import BackgroundSection from "../components/global/BackgroundSection";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 
 const IndexPage = ({ data }) => {
-  console.log("data", data);
   return (
     <Layout>
       <SEO title="Home" />
       <BackgroundSection
         img={data.img.childImageSharp.fluid}
-        styleClass="hello"
+        title="Regular Joe's"
       />
-      <FaGulp />
     </Layout>
   );
 };
