@@ -5,7 +5,7 @@ import Img from "gatsby-image";
 const Menu = ({ items }) => {
   const getCategories = items => {
     let tempItems = items.map(items => {
-      return items.node.category;
+      return items.node.category.title;
     });
     let tempCategories = new Set(tempItems);
     let categories = Array.from(tempCategories);
@@ -18,12 +18,11 @@ const Menu = ({ items }) => {
   const [categories] = useState(getCategories([...items.edges]));
 
   const handleItems = category => {
-    console.log(category);
     if (category === "all") {
       setCoffeeItems(menuItems);
     } else {
       let filteredItems = menuItems.filter(
-        ({ node }) => node.category == category
+        ({ node }) => node.category.title == category
       );
       setCoffeeItems(filteredItems);
     }

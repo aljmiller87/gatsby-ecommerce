@@ -4,6 +4,8 @@ import BackgroundSection from "../components/global/BackgroundSection";
 import Layout from "../components/layout";
 import Info from "../components/Home/Info";
 import Menu from "../components/Home/Menu";
+import Products from "../components/Home/Products";
+import Contact from "../components/Home/Contact";
 
 const IndexPage = ({ data }) => {
   return (
@@ -14,6 +16,8 @@ const IndexPage = ({ data }) => {
       />
       <Info />
       <Menu items={data.menu} />
+      <Products items={data.products} />
+      <Contact />
     </Layout>
   );
 };
@@ -23,7 +27,7 @@ export const query = graphql`
     img: file(relativePath: { eq: "default-background.jpeg" }) {
       childImageSharp {
         fluid {
-          ...GatsbyImageSharpFluid_tracedSVG
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
@@ -36,10 +40,26 @@ export const query = graphql`
             description
           }
           price
-          category
+          category {
+            title
+          }
           image {
             fixed(width: 50, height: 50) {
               ...GatsbyContentfulFixed_tracedSVG
+            }
+          }
+        }
+      }
+    }
+    products: allContentfulCoffeeProduct {
+      edges {
+        node {
+          id: contentful_id
+          title
+          price
+          image {
+            fluid {
+              ...GatsbyContentfulFluid_tracedSVG
             }
           }
         }
