@@ -1,10 +1,34 @@
 import React, { useState } from "react";
 import Title from "../global/Title";
 import Img from "gatsby-image";
+
 const Menu = ({ items }) => {
-  const [menuItems, setMenuItems] = useState([...items.edges]);
-  const [coffeeItems, setCoffeeItems] = useState([...items.edges]);
-  console.log("menuItems", menuItems);
+  const getCategories = items => {
+    let tempItems = items.map(items => {
+      return items.node.category;
+    });
+    let tempCategories = new Set(tempItems);
+    let categories = Array.from(tempCategories);
+    categories = ["all", ...categories];
+    return categories;
+  };
+
+  const [menuItems] = useState([...items.edges]);
+  const [coffeeItems, setCoffeeItems] = useState(menuItems);
+  const [categories] = useState(getCategories([...items.edges]));
+
+  const handleItems = category => {
+    console.log(category);
+    if (category === "all") {
+      setCoffeeItems(menuItems);
+    } else {
+      let filteredItems = menuItems.filter(
+        ({ node }) => node.category == category
+      );
+      setCoffeeItems(filteredItems);
+    }
+  };
+
   if (!menuItems.length) {
     return (
       <section className="menu py-5">
@@ -23,6 +47,23 @@ const Menu = ({ items }) => {
     <section className="menu py-5">
       <div className="container">
         <Title title="best of our menu" />
+        <div className="row mb-5">
+          <div className="col-10 mx-auto text-center">
+            {categories.map((category, index) => {
+              return (
+                <button
+                  type="button"
+                  value={category}
+                  key={category}
+                  className="btn btn-yellow text-capitalize m-3"
+                  onClick={() => handleItems(category)}
+                >
+                  {category}
+                </button>
+              );
+            })}
+          </div>
+        </div>
         <div className="row">
           {menuItems.length > 0 &&
             coffeeItems.map(({ node }) => {
