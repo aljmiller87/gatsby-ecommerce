@@ -22,7 +22,7 @@ const Menu = ({ items }) => {
       setCoffeeItems(menuItems);
     } else {
       let filteredItems = menuItems.filter(
-        ({ node }) => node.category.title == category
+        ({ node }) => node.category.title === category
       );
       setCoffeeItems(filteredItems);
     }

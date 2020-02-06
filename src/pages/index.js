@@ -45,7 +45,7 @@ export const query = graphql`
           }
           image {
             fixed(width: 50, height: 50) {
-              ...GatsbyContentfulFixed_tracedSVG
+              ...GatsbyContentfulFixed
             }
           }
         }
@@ -59,7 +59,7 @@ export const query = graphql`
           price
           image {
             fluid {
-              ...GatsbyContentfulFluid_tracedSVG
+              ...GatsbyContentfulFluid
             }
           }
         }
